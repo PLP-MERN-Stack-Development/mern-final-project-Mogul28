@@ -1,5 +1,4 @@
 [build]
-  base = "xtracker/frontend"
   publish = "dist"
   command = "npm run build"
 
