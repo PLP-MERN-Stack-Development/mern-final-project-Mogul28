@@ -376,8 +376,9 @@ Comprehensive documentation is available in the `docs/` directory:
 ---  
 
 
-## pitvh deck
-      link to pitch deck presentation: https://gamma.app/docs/xtracker-12uish5pmmveg3f
+## pitch deck
+
+    https://gamma.app/docs/xtracker-12uish5pmmveg3f
 
 ## 🤝 Contributing
 
