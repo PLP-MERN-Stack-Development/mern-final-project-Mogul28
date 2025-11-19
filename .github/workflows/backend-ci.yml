@@ -43,16 +43,22 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - name: Verify directory structure
+        run: |
+          ls -la
+          ls -la xtracker/ || echo "xtracker directory not found"
+          ls -la xtracker/backend/ || echo "backend directory not found"
+
       - name: Install dependencies
-        working-directory: ./xtracker/backend
+        working-directory: xtracker/backend
         run: npm ci
 
       - name: Run linter
-        working-directory: ./xtracker/backend
+        working-directory: xtracker/backend
         run: npm run lint || true
 
       - name: Run tests
-        working-directory: ./xtracker/backend
+        working-directory: xtracker/backend
         env:
           MONGODB_URI: mongodb://localhost:27017/xtracker_test
           JWT_SECRET: test-secret-key-for-ci
@@ -60,7 +66,7 @@ jobs:
         run: npm test || echo "Tests completed with exit code $?"
 
       - name: Check code coverage
-        working-directory: ./xtracker/backend
+        working-directory: xtracker/backend
         run: npm run test:coverage || true
 
   deploy:

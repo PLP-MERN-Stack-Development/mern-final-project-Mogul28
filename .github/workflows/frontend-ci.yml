@@ -32,20 +32,26 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - name: Verify directory structure
+        run: |
+          ls -la
+          ls -la xtracker/ || echo "xtracker directory not found"
+          ls -la xtracker/frontend/ || echo "frontend directory not found"
+
       - name: Install dependencies
-        working-directory: ./xtracker/frontend
+        working-directory: xtracker/frontend
         run: npm ci
 
       - name: Run linter
-        working-directory: ./xtracker/frontend
+        working-directory: xtracker/frontend
         run: npm run lint
 
       - name: Run tests
-        working-directory: ./xtracker/frontend
+        working-directory: xtracker/frontend
         run: npm test -- --coverage --watchAll=false
 
       - name: Build
-        working-directory: ./xtracker/frontend
+        working-directory: xtracker/frontend
         env:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
         run: npm run build
@@ -68,14 +74,14 @@ jobs:
         run: npm install -g vercel@latest
 
       - name: Pull Vercel Environment Information
-        working-directory: ./xtracker/frontend
+        working-directory: xtracker/frontend
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-        working-directory: ./xtracker/frontend
+        working-directory: xtracker/frontend
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
-        working-directory: ./xtracker/frontend
+        working-directory: xtracker/frontend
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
 
