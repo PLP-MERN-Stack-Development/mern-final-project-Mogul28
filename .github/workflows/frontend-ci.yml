@@ -23,8 +23,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: xtracker/frontend/package-lock.json
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: xtracker/frontend/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('xtracker/frontend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Install dependencies
         working-directory: ./xtracker/frontend
