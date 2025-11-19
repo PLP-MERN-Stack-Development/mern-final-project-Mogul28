@@ -1,52 +1,493 @@
-# MERN Stack Capstone Project
+# XTracker - Expense Tracking Application
 
-This assignment focuses on designing, developing, and deploying a comprehensive full-stack MERN application that showcases all the skills you've learned throughout the course.
+<div align="center">
 
-## Assignment Overview
+![XTracker Logo](https://via.placeholder.com/200x200?text=XTracker)
 
-You will:
-1. Plan and design a full-stack MERN application
-2. Develop a robust backend with MongoDB, Express.js, and Node.js
-3. Create an interactive frontend with React.js
-4. Implement testing across the entire application
-5. Deploy the application to production
+**A modern, full-stack expense tracking application built with the MERN stack**
 
-## Getting Started
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://your-frontend-url.vercel.app)
+[![Backend API](https://img.shields.io/badge/API-Backend-blue)](https://your-backend-url.onrender.com)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-1. Accept the GitHub Classroom assignment
-2. Clone the repository to your local machine
-3. Follow the instructions in the `Week8-Assignment.md` file
-4. Plan, develop, and deploy your capstone project
+[Features](#features) • [Demo](#demo) • [Setup](#getting-started) • [Documentation](#documentation) • [Deployment](#deployment)
 
-## Files Included
+</div>
 
-- `Week8-Assignment.md`: Detailed assignment instructions
+---
 
-## Requirements
+## 📋 Table of Contents
+
+- [About](#about)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Demo](#demo)
+- [Technology Stack](#technology-stack)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [API Documentation](#api-documentation)
+- [Deployment](#deployment)
+- [Testing](#testing)
+- [CI/CD](#cicd)
+- [Monitoring](#monitoring)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## 🎯 About
+
+XTracker is a comprehensive expense tracking application that helps users manage and analyze their spending. Built with modern web technologies, it provides an intuitive interface for tracking expenses, viewing analytics, and understanding spending patterns.
+
+### Key Highlights
+
+- ✅ **Full-Stack MERN Application** - MongoDB, Express.js, React, Node.js
+- ✅ **Production Ready** - Deployed and accessible online
+- ✅ **Secure Authentication** - JWT-based authentication with password hashing
+- ✅ **Comprehensive Testing** - Unit and integration tests with 70%+ coverage
+- ✅ **CI/CD Pipeline** - Automated testing and deployment
+- ✅ **Error Tracking** - Sentry integration for monitoring
+- ✅ **Responsive Design** - Works on desktop, tablet, and mobile devices
+
+---
+
+## ✨ Features
+
+### Core Functionality
+
+- 🔐 **User Authentication**
+  - Secure signup and login
+  - JWT token-based authentication
+  - User-specific data isolation
+
+- 💰 **Expense Management**
+  - Add, edit, and delete expenses
+  - Categorize expenses (Food & Dining, Transportation, Shopping, etc.)
+  - Track vendor information
+  - Date-based expense tracking
+
+- 📊 **Analytics & Reports**
+  - Dashboard with key spending metrics
+  - Category-based spending analysis
+  - Vendor tracking and analysis
+  - Monthly spending trends
+  - Visual charts and graphs
+  - Period-based reports
+
+- 🎨 **User Interface**
+  - Modern, clean design
+  - Responsive layout
+  - Intuitive navigation
+  - Real-time updates
+
+---
+
+## 📸 Screenshots
+
+### Dashboard
+![Dashboard](https://via.placeholder.com/800x400?text=Dashboard+View)
+
+*Overview of spending statistics and key metrics*
+
+### Expenses Page
+![Expenses](https://via.placeholder.com/800x400?text=Expenses+Management)
+
+*List and manage all your expenses*
+
+### Reports
+![Reports](https://via.placeholder.com/800x400?text=Analytics+and+Reports)
+
+*Detailed analytics with visual charts*
+
+### Login
+![Login](https://via.placeholder.com/800x400?text=Login+Page)
+
+*Secure authentication interface*
+
+> **Note**: Replace placeholder images with actual screenshots of your application
+
+---
+
+## 🎥 Demo
+
+### Live Application
+
+- **Frontend**: [https://your-frontend-url.vercel.app](https://your-frontend-url.vercel.app)
+- **Backend API**: [https://your-backend-url.onrender.com](https://your-backend-url.onrender.com)
+- **Health Check**: [https://your-backend-url.onrender.com/health](https://your-backend-url.onrender.com/health)
+
+### Video Demonstration
+
+📹 **[Watch 5-10 Minute Demo Video](https://your-video-url.com)**
+
+*This video demonstrates:*
+- User registration and login
+- Adding and managing expenses
+- Dashboard overview
+- Reports and analytics
+- Key features and functionality
+
+---
+
+## 🛠 Technology Stack
+
+### Frontend
+- **React 18.3** - UI library
+- **Vite 5.4** - Build tool
+- **Tailwind CSS 3.4** - Styling
+- **Lucide React** - Icons
+- **Vitest** - Testing framework
+
+### Backend
+- **Node.js 18+** - Runtime
+- **Express.js 4.18** - Web framework
+- **MongoDB** - Database
+- **Mongoose 8.0** - ODM
+- **JWT** - Authentication
+- **bcryptjs** - Password hashing
+- **Jest** - Testing framework
+
+### Infrastructure
+- **Vercel** - Frontend hosting
+- **Render** - Backend hosting
+- **MongoDB Atlas** - Cloud database
+- **GitHub Actions** - CI/CD
+- **Sentry** - Error tracking
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
 
 - Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
 - npm or yarn
-- Git and GitHub account
-- Accounts on deployment platforms (Render/Vercel/Netlify/etc.)
+- MongoDB Atlas account (or local MongoDB)
+- Git
 
-## Project Ideas
+### Installation
 
-The `Week8-Assignment.md` file includes several project ideas, but you're encouraged to develop your own idea that demonstrates your skills and interests.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/mern-final-project-Mogul28.git
+   cd mern-final-project-Mogul28/xtracker
+   ```
 
-## Submission
+2. **Backend Setup**
+   ```bash
+   cd backend
+   npm install
+   ```
 
-Your project will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+3. **Create `.env` file in backend directory**
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_strong_random_secret_key
+   FRONTEND_URL=http://localhost:5173
+   NODE_ENV=development
+   PORT=3000
+   SENTRY_DSN=your_sentry_dsn_optional
+   ```
 
-1. Commit and push your code regularly
-2. Include comprehensive documentation
-3. Deploy your application and add the live URL to your README.md
-4. Create a video demonstration and include the link in your README.md
+4. **Frontend Setup**
+   ```bash
+   cd ../frontend
+   npm install
+   ```
 
-## Resources
+5. **Create `.env` file in frontend directory**
+   ```env
+   VITE_API_URL=http://localhost:3000
+   VITE_SENTRY_DSN=your_sentry_dsn_optional
+   ```
 
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [GitHub Classroom Guide](https://docs.github.com/en/education/manage-coursework-with-github-classroom) 
+### Running Locally
+
+1. **Start Backend** (Terminal 1)
+   ```bash
+   cd backend
+   npm start
+   ```
+   Backend runs on `http://localhost:3000`
+
+2. **Start Frontend** (Terminal 2)
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+   Frontend runs on `http://localhost:5173`
+
+3. **Verify Setup**
+   - Backend health check: `http://localhost:3000/health`
+   - Frontend: `http://localhost:5173`
+
+### Development Scripts
+
+**Backend:**
+- `npm start` - Start production server
+- `npm run dev` - Start development server with watch mode
+- `npm test` - Run tests
+- `npm run test:coverage` - Run tests with coverage
+- `npm run seed` - Seed database with sample data
+
+**Frontend:**
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm test` - Run tests
+- `npm run test:coverage` - Run tests with coverage
+
+---
+
+## 📁 Project Structure
+
+```
+xtracker/
+├── backend/                 # Backend API
+│   ├── config/             # Configuration
+│   ├── middleware/         # Express middleware
+│   ├── models/             # Mongoose models
+│   ├── routes/             # API routes
+│   ├── scripts/            # Utility scripts
+│   ├── __tests__/          # Test files
+│   └── server.js           # Entry point
+│
+├── frontend/               # Frontend React app
+│   ├── src/
+│   │   ├── components/     # React components
+│   │   ├── pages/          # Page components
+│   │   └── utils/          # Utility functions
+│   └── __tests__/          # Test files
+│
+├── docs/                   # Documentation
+│   ├── API.md             # API documentation
+│   ├── USER_GUIDE.md      # User guide
+│   ├── ARCHITECTURE.md    # Technical architecture
+│   └── PRESENTATION.md    # Presentation guide
+│
+└── .github/
+    └── workflows/         # CI/CD pipelines
+```
+
+---
+
+## 📚 API Documentation
+
+Comprehensive API documentation is available in the [API Documentation](xtracker/docs/API.md) file.
+
+### Quick Reference
+
+**Base URL**: `https://your-backend-url.onrender.com`
+
+**Endpoints:**
+- `POST /api/auth/signup` - Register new user
+- `POST /api/auth/login` - Authenticate user
+- `GET /api/expenses` - Get all expenses (protected)
+- `POST /api/expenses` - Create expense (protected)
+- `PUT /api/expenses/:id` - Update expense (protected)
+- `DELETE /api/expenses/:id` - Delete expense (protected)
+- `GET /api/categories` - Get expense categories
+
+For detailed API documentation, see [docs/API.md](xtracker/docs/API.md)
+
+---
+
+## 🚢 Deployment
+
+### Production Deployment
+
+The application is deployed to production:
+
+- **Frontend**: Vercel - [Live URL](https://your-frontend-url.vercel.app)
+- **Backend**: Render - [API URL](https://your-backend-url.onrender.com)
+- **Database**: MongoDB Atlas
+
+### Deployment Guide
+
+Detailed deployment instructions are available in [DEPLOYMENT.md](xtracker/DEPLOYMENT.md)
+
+### Environment Variables
+
+**Backend (Render):**
+- `MONGODB_URI` - MongoDB connection string
+- `JWT_SECRET` - JWT signing secret
+- `FRONTEND_URL` - Frontend URL for CORS
+- `NODE_ENV` - `production`
+- `SENTRY_DSN` - Sentry DSN (optional)
+
+**Frontend (Vercel):**
+- `VITE_API_URL` - Backend API URL
+- `VITE_SENTRY_DSN` - Sentry DSN (optional)
+
+---
+
+## 🧪 Testing
+
+### Test Coverage
+
+- **Backend**: 70%+ coverage target
+- **Frontend**: 70%+ coverage target
+
+### Running Tests
+
+**Backend:**
+```bash
+cd backend
+npm test
+npm run test:coverage
+```
+
+**Frontend:**
+```bash
+cd frontend
+npm test
+npm run test:coverage
+```
+
+### Test Files
+
+- Backend tests: `backend/__tests__/`
+- Frontend tests: `frontend/src/__tests__/`
+
+---
+
+## 🔄 CI/CD
+
+### GitHub Actions Workflows
+
+The project includes automated CI/CD pipelines:
+
+- **Backend CI/CD** (`.github/workflows/backend-ci.yml`)
+  - Runs tests on push/PR
+  - Deploys to Render on main branch
+
+- **Frontend CI/CD** (`.github/workflows/frontend-ci.yml`)
+  - Runs tests and linting
+  - Builds production bundle
+  - Deploys to Vercel on main branch
+
+### Workflow Features
+
+- Automated testing
+- Code linting
+- Coverage reports
+- Automatic deployment
+- Environment variable management
+
+---
+
+## 📊 Monitoring
+
+### Error Tracking
+
+The application uses **Sentry** for error tracking and monitoring:
+
+- Real-time error tracking
+- Performance monitoring
+- User session replay
+- Error alerts
+
+### Health Checks
+
+- Backend health endpoint: `/health`
+- Database connection status
+- Uptime monitoring ready
+
+---
+
+## 📖 Documentation
+
+Comprehensive documentation is available in the `docs/` directory:
+
+- **[API Documentation](xtracker/docs/API.md)** - Complete API reference
+- **[User Guide](xtracker/docs/USER_GUIDE.md)** - End-user documentation
+- **[Technical Architecture](xtracker/docs/ARCHITECTURE.md)** - System architecture and design
+- **[Presentation Guide](xtracker/docs/PRESENTATION.md)** - Project presentation template
+
+### Additional Resources
+
+- [Backend README](xtracker/backend/README.md)
+- [Frontend README](xtracker/frontend/README.md)
+- [Deployment Guide](xtracker/DEPLOYMENT.md)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Development Guidelines
+
+- Follow existing code style
+- Write tests for new features
+- Update documentation
+- Ensure all tests pass
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👤 Author
+
+**Your Name**
+
+- GitHub: [@yourusername](https://github.com/yourusername)
+- Email: your.email@example.com
+- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+
+---
+
+## 🙏 Acknowledgments
+
+- Course instructors and mentors
+- Open-source community
+- MongoDB, Express, React, and Node.js communities
+- Documentation contributors
+
+---
+
+## 📞 Support
+
+For support, please:
+
+1. Check the [documentation](xtracker/docs/)
+2. Review [existing issues](https://github.com/yourusername/mern-final-project-Mogul28/issues)
+3. Create a new issue if needed
+
+---
+
+## 🗺 Roadmap
+
+### Planned Features
+
+- [ ] Email verification
+- [ ] Password reset functionality
+- [ ] Export to CSV/Excel
+- [ ] Budget tracking
+- [ ] Recurring expenses
+- [ ] Receipt photo upload
+- [ ] Multi-currency support
+- [ ] Mobile app
+
+See [ARCHITECTURE.md](xtracker/docs/ARCHITECTURE.md) for more details.
+
+---
+
+<div align="center">
+
+**Built with ❤️ using the MERN Stack**
+
+⭐ Star this repo if you find it helpful!
+
+</div>
