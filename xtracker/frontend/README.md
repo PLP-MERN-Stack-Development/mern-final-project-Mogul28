@@ -1,6 +1,6 @@
 # Expense Tracker Frontend
 
-Frontend application for the Expense Tracker, built with React and Vite, hosted on Vercel.
+Frontend application for the Expense Tracker, built with React and Vite, hosted on Netlify.
 
 ## Setup
 
@@ -24,38 +24,36 @@ VITE_API_URL=http://localhost:3000
 npm run dev
 ```
 
-## Deployment on Vercel
+## Deployment on Netlify
 
 ### Quick Setup
 
 1. Push your code to GitHub/GitLab/Bitbucket
-2. Go to [Vercel Dashboard](https://vercel.com/dashboard)
-3. Click "Add New..." → "Project"
-4. Import your repository
-5. Configure the project:
-   - **Framework Preset**: Vite (auto-detected)
-   - **Root Directory**: `frontend`
-   - **Build Command**: `npm run build` (auto-detected)
-   - **Output Directory**: `dist` (auto-detected)
+2. Go to [Netlify Dashboard](https://app.netlify.com)
+3. Click "Add new site" → "Import an existing project"
+4. Connect to GitHub and select your repository
+5. Configure build settings:
+   - **Base directory**: `xtracker/frontend`
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist`
 6. Add Environment Variable:
    ```
-   VITE_API_URL=https://your-backend-url.onrender.com
+   VITE_API_URL=https://xtracker-app.onrender.com
    ```
-   Replace with your actual Render backend URL
-7. Click "Deploy"
+7. Click "Deploy site"
 8. Wait for deployment to complete
 
 ### After Deployment
 
-1. Copy your Vercel frontend URL
-2. Update your backend `FRONTEND_URL` environment variable in Render to match your Vercel URL
+1. Copy your Netlify frontend URL (e.g., `https://xtrackerapp.netlify.app`)
+2. Update your backend `FRONTEND_URL` environment variable in Render to match your Netlify URL
 3. This ensures proper CORS configuration
 
 ## Environment Variables
 
 - `VITE_API_URL` - Backend API URL
   - **Development**: Leave empty to use Vite proxy (defaults to `http://localhost:3000`)
-  - **Production**: Your Render backend URL (e.g., `https://xtracker-backend.onrender.com`)
+  - **Production**: Your Render backend URL (e.g., `https://xtracker-app.onrender.com`)
 
 ## Build
 

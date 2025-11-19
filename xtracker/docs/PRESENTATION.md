@@ -66,7 +66,7 @@ A Full-Stack MERN Application
 - **Mongoose** - ODM for MongoDB
 
 ### Infrastructure
-- **Vercel** - Frontend hosting
+- **Netlify** - Frontend hosting
 - **Render** - Backend hosting
 - **MongoDB Atlas** - Cloud database
 - **GitHub Actions** - CI/CD
@@ -85,7 +85,7 @@ A Full-Stack MERN Application
        ▼
 ┌─────────────┐         ┌─────────────┐
 │  Frontend   │────────▶│   Backend   │
-│   (Vercel)  │         │  (Render)   │
+│  (Netlify)  │         │  (Render)   │
 └─────────────┘         └──────┬──────┘
                                │
                                ▼
@@ -222,7 +222,7 @@ A Full-Stack MERN Application
 
 ### Production Deployment
 
-**Frontend (Vercel)**
+**Frontend (Netlify)**
 - Automatic builds from Git
 - Global CDN distribution
 - Environment variable management
@@ -407,7 +407,7 @@ Thank you for your attention!
 - React Documentation
 - Express.js Documentation
 - MongoDB Documentation
-- Vercel Documentation
+- Netlify Documentation
 - Render Documentation
 - Sentry Documentation
 - Tailwind CSS Documentation

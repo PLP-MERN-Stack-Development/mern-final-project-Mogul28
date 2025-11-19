@@ -3,7 +3,7 @@
 ## Base URL
 
 - **Development**: `http://localhost:3000`
-- **Production**: `https://your-backend-url.onrender.com`
+- **Production**: `https://xtracker-app.onrender.com`
 
 ## Authentication
 

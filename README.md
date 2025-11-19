@@ -87,9 +87,9 @@ XTracker is a comprehensive expense tracking application that helps users manage
 
 ### Live Application
 
-- **Frontend**: xtrackerapp.netlify.app
+- **Frontend**: https://xtrackerapp.netlify.app
 - **Backend API**: https://xtracker-app.onrender.com
-- **Health Check**: https://xtracker-app.onrender.com
+- **Health Check**: https://xtracker-app.onrender.com/health
 
 
 ## 🛠 Technology Stack
@@ -111,7 +111,7 @@ XTracker is a comprehensive expense tracking application that helps users manage
 - **Jest** - Testing framework
 
 ### Infrastructure
-- **Vercel** - Frontend hosting
+- **Netlify** - Frontend hosting
 - **Render** - Backend hosting
 - **MongoDB Atlas** - Cloud database
 - **GitHub Actions** - CI/CD
@@ -240,7 +240,7 @@ Comprehensive API documentation is available in the [API Documentation](xtracker
 
 ### Quick Reference
 
-**Base URL**: `https://your-backend-url.onrender.com`
+**Base URL**: `https://xtracker-app.onrender.com`
 
 **Endpoints:**
 - `POST /api/auth/signup` - Register new user
@@ -261,7 +261,7 @@ For detailed API documentation, see [docs/API.md](xtracker/docs/API.md)
 
 The application is deployed to production:
 
-- **Frontend**: netlify - xtrackerapp.netlify.app
+- **Frontend**: Netlify - https://xtrackerapp.netlify.app
 - **Backend**: Render - https://xtracker-app.onrender.com
 - **Database**: MongoDB Atlas
 
@@ -278,7 +278,7 @@ Detailed deployment instructions are available in [DEPLOYMENT.md](xtracker/DEPLO
 - `NODE_ENV` - `production`
 - `SENTRY_DSN` - Sentry DSN (optional)
 
-**Frontend (netlify):**
+**Frontend (Netlify):**
 - `VITE_API_URL` - Backend API URL
 - `VITE_SENTRY_DSN` - Sentry DSN (optional)
 
@@ -327,7 +327,7 @@ The project includes automated CI/CD pipelines:
 - **Frontend CI/CD** (`.github/workflows/frontend-ci.yml`)
   - Runs tests and linting
   - Builds production bundle
-  - Deploys to Vercel on main branch
+  - Deploys to Netlify on main branch
 
 ### Workflow Features
 

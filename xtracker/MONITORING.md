@@ -30,7 +30,7 @@ XTracker uses Sentry for error tracking and monitoring in both frontend and back
 ### Frontend Configuration
 
 1. **Add Environment Variable**
-   - In Vercel dashboard, add:
+   - In Netlify dashboard, add:
      ```
      VITE_SENTRY_DSN=your_frontend_sentry_dsn_here
      ```

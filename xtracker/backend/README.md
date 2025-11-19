@@ -74,7 +74,7 @@ npm run seed
 4. Add the following environment variables in Render dashboard:
    - `MONGODB_URI` - Your MongoDB Atlas connection string
    - `JWT_SECRET` - A strong random string for JWT token signing
-   - `FRONTEND_URL` - Your Vercel frontend URL (e.g., `https://your-app.vercel.app`)
+   - `FRONTEND_URL` - Your Netlify frontend URL (e.g., `https://xtrackerapp.netlify.app`)
    - `NODE_ENV` - Set to `production` (already in render.yaml)
    - `PORT` - Port number (Render sets this automatically)
 
@@ -93,6 +93,6 @@ npm run seed
 
 - Use MongoDB Atlas for production (free tier available)
 - Generate a strong JWT_SECRET (use a random string generator)
-- Set FRONTEND_URL to your Vercel deployment URL for proper CORS
+- Set FRONTEND_URL to your Netlify deployment URL for proper CORS
 - Render free tier services spin down after 15 minutes of inactivity
 

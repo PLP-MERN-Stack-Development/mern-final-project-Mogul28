@@ -32,7 +32,7 @@ XTracker is a full-stack MERN (MongoDB, Express.js, React, Node.js) application 
 ```
 ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
 │   Client    │────────▶│  Frontend   │────────▶│   Backend   │
-│  (Browser)  │         │   (Vercel)   │         │  (Render)   │
+│  (Browser)  │         │  (Netlify)   │         │  (Render)   │
 └─────────────┘         └─────────────┘         └──────┬──────┘
                                                        │
                                                        ▼
@@ -79,7 +79,7 @@ XTracker is a full-stack MERN (MongoDB, Express.js, React, Node.js) application 
 
 ### Infrastructure
 
-- **Frontend Hosting**: Vercel
+- **Frontend Hosting**: Netlify
 - **Backend Hosting**: Render
 - **Database**: MongoDB Atlas
 - **CI/CD**: GitHub Actions
@@ -277,7 +277,7 @@ Centralized API client (`utils/api.js`) handles:
 4. **Input Validation**: Server-side validation for all inputs
 5. **SQL Injection Prevention**: Mongoose parameterized queries
 6. **XSS Protection**: React's built-in XSS protection
-7. **HTTPS**: Enforced in production (Vercel/Render)
+7. **HTTPS**: Enforced in production (Netlify/Render)
 
 ---
 
@@ -321,7 +321,7 @@ Centralized API client (`utils/api.js`) handles:
 
 ## Deployment Architecture
 
-### Frontend (Vercel)
+### Frontend (Netlify)
 
 - **Build**: Vite production build
 - **Output**: Static files in `dist/`
@@ -381,7 +381,7 @@ Centralized API client (`utils/api.js`) handles:
 2. **Deploy Job**:
    - Runs after successful tests
    - Only on main branch
-   - Deploys to Vercel
+   - Deploys to Netlify
 
 ---
 

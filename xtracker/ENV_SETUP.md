@@ -18,7 +18,7 @@ JWT_SECRET=your-strong-random-secret-key-change-in-production
 
 # Frontend URL (for CORS)
 # Development: http://localhost:5173
-# Production: https://your-frontend.netlify.app
+# Production: https://xtrackerapp.netlify.app
 FRONTEND_URL=http://localhost:5173
 
 # Environment
@@ -41,7 +41,7 @@ Create a `.env` file in the `xtracker/frontend/` directory:
 ```env
 # Backend API URL
 # Development: http://localhost:3000
-# Production: https://your-backend.onrender.com
+# Production: https://xtracker-app.onrender.com
 VITE_API_URL=http://localhost:3000
 
 # Sentry DSN (Optional)

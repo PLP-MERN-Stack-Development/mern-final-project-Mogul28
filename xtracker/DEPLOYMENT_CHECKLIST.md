@@ -39,7 +39,7 @@ Use this checklist to ensure your XTracker application is fully deployed and rea
   - [ ] `NODE_ENV` - `production`
   - [ ] `SENTRY_DSN` - (Optional) Sentry DSN
 - [ ] Deploy service
-- [ ] Test health endpoint: `https://your-backend.onrender.com/health`
+- [ ] Test health endpoint: `https://xtracker-app.onrender.com/health`
 - [ ] Copy backend URL for frontend configuration
 
 ### 2. Frontend Deployment (Netlify)
@@ -52,7 +52,7 @@ Use this checklist to ensure your XTracker application is fully deployed and rea
   - [ ] Publish Directory: `dist`
   - [ ] Framework: `Vite` (auto-detected)
 - [ ] Add environment variables:
-  - [ ] `VITE_API_URL` - Your Render backend URL
+  - [ ] `VITE_API_URL` - https://xtracker-app.onrender.com
   - [ ] `VITE_SENTRY_DSN` - (Optional) Sentry DSN
 - [ ] Deploy project
 - [ ] Copy frontend URL

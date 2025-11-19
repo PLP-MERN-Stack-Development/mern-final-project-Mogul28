@@ -44,24 +44,24 @@ This guide covers deploying the Expense Tracker application to Render (backend) 
    ```
    MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/xtracker
    JWT_SECRET=your-strong-random-secret-key-here
-   FRONTEND_URL=https://your-frontend.netlify.app
+   FRONTEND_URL=https://xtrackerapp.netlify.app
    NODE_ENV=production
    PORT=3000
    ```
 7. Click "Create Web Service"
 8. Wait for deployment to complete
-9. Copy your backend URL (e.g., `https://xtracker-backend.onrender.com`)
+9. Copy your backend URL (e.g., `https://xtracker-app.onrender.com`)
 
 ### Step 3: Test Backend
 
-Visit `https://your-backend-url.onrender.com/health` to verify it's running.
+Visit `https://xtracker-app.onrender.com/health` to verify it's running.
 
 ## Frontend Deployment (Netlify)
 
 ### Step 1: Prepare Frontend
 
 1. Ensure your frontend code is pushed to GitHub/GitLab/Bitbucket
-2. Note your backend URL from Render (e.g., `https://xtracker-backend.onrender.com`)
+2. Note your backend URL from Render (e.g., `https://xtracker-app.onrender.com`)
 
 ### Step 2: Deploy to Netlify
 
@@ -73,12 +73,11 @@ Visit `https://your-backend-url.onrender.com/health` to verify it's running.
    - **Build command**: `npm run build`
    - **Publish directory**: `dist`
 5. Add Environment Variables:
-   - **VITE_API_URL**: `https://your-backend-url.onrender.com`
-     - Replace `your-backend-url.onrender.com` with your actual Render backend URL
+   - **VITE_API_URL**: `https://xtracker-app.onrender.com`
    - **VITE_SENTRY_DSN**: (Optional) Your Sentry DSN if using error tracking
 6. Click "Deploy site"
 7. Wait for deployment to complete
-8. Copy your frontend URL (e.g., `https://your-app.netlify.app`)
+8. Copy your frontend URL (e.g., `https://xtrackerapp.netlify.app`)
 
 **Note:** The `netlify.toml` file in `xtracker/frontend/` will automatically configure the build settings and SPA routing.
 
@@ -87,7 +86,7 @@ Visit `https://your-backend-url.onrender.com/health` to verify it's running.
 1. Go back to Render dashboard
 2. Update the `FRONTEND_URL` environment variable to your Netlify URL:
    ```
-   FRONTEND_URL=https://your-frontend.netlify.app
+   FRONTEND_URL=https://xtrackerapp.netlify.app
    ```
 3. Render will automatically redeploy
 
@@ -108,7 +107,7 @@ Visit `https://your-backend-url.onrender.com/health` to verify it's running.
 - `PORT` - `3000` (Render sets this automatically)
 
 ### Frontend (Netlify)
-- `VITE_API_URL` - Your Render backend URL (e.g., `https://xtracker-backend.onrender.com`)
+- `VITE_API_URL` - Your Render backend URL (e.g., `https://xtracker-app.onrender.com`)
 - `VITE_SENTRY_DSN` - (Optional) Sentry DSN for error tracking
 
 ## Troubleshooting
