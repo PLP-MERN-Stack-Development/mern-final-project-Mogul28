@@ -29,7 +29,12 @@ if (!process.env.MONGODB_URI) {
 }
 
 if (!process.env.JWT_SECRET) {
-  console.warn('WARNING: JWT_SECRET not set, using default (not secure for production)');
+  if (process.env.NODE_ENV === 'production') {
+    console.error('ERROR: JWT_SECRET environment variable is required in production');
+    process.exit(1);
+  } else {
+    console.warn('WARNING: JWT_SECRET not set, using default (not secure for production)');
+  }
 }
 
 // Middleware
