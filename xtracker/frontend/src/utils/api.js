@@ -74,10 +74,12 @@ async function apiRequest(endpoint, options = {}) {
     
     // Handle 401 Unauthorized - token expired or invalid
     if (response.status === 401) {
-      // Clear auth data and throw error
+      // Clear auth data and throw error (don't fall back to mock data)
       localStorage.removeItem(TOKEN_KEY);
       localStorage.removeItem(USER_KEY);
-      throw new Error('Session expired. Please login again.');
+      const error = new Error('Session expired. Please login again.');
+      error.status = 401;
+      throw error;
     }
     
     if (!response.ok) {
@@ -93,7 +95,12 @@ async function apiRequest(endpoint, options = {}) {
 
     return await response.json();
   } catch (error) {
-    // Fallback to mock data on connection error
+    // Don't fall back to mock data for 401 errors - let them propagate
+    if (error.status === 401 || error.message.includes('Session expired')) {
+      throw error;
+    }
+    
+    // Fallback to mock data on connection error (but not auth errors)
     console.warn('Backend connection failed, using mock data:', error.message);
     return handleMockRequest(endpoint, options);
   }

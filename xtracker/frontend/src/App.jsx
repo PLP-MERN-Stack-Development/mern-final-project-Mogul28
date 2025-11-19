@@ -23,6 +23,8 @@ function App() {
       setUser(savedUser);
       setLoading(false);
     } else {
+      // Clear any invalid auth data
+      authAPI.logout();
       setLoading(false);
     }
   }, []);
@@ -42,13 +44,15 @@ function App() {
       setExpenses(data);
     } catch (err) {
       console.error('Failed to fetch expenses:', err);
+      
+      // If unauthorized, logout user immediately
+      if (err.message && (err.message.includes('Session expired') || err.message.includes('401') || err.status === 401)) {
+        handleLogout();
+        return; // Exit early, user will be redirected to login
+      }
+      
       const errorMessage = err.message || 'Failed to load expenses. Please try again later.';
       setError(errorMessage);
-      
-      // If unauthorized, logout user
-      if (err.message.includes('Session expired') || err.message.includes('401')) {
-        handleLogout();
-      }
     } finally {
       setLoading(false);
     }

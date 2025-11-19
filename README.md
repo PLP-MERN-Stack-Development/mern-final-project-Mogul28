@@ -2,15 +2,11 @@
 
 <div align="center">
 
-![XTracker Logo](https://via.placeholder.com/200x200?text=XTracker)
+
 
 **A modern, full-stack expense tracking application built with the MERN stack**
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://your-frontend-url.vercel.app)
-[![Backend API](https://img.shields.io/badge/API-Backend-blue)](https://your-backend-url.onrender.com)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[Features](#features) • [Demo](#demo) • [Setup](#getting-started) • [Documentation](#documentation) • [Deployment](#deployment)
 
 </div>
 
@@ -83,52 +79,18 @@ XTracker is a comprehensive expense tracking application that helps users manage
 
 ---
 
-## 📸 Screenshots
 
-### Dashboard
-![Dashboard](https://via.placeholder.com/800x400?text=Dashboard+View)
 
-*Overview of spending statistics and key metrics*
 
-### Expenses Page
-![Expenses](https://via.placeholder.com/800x400?text=Expenses+Management)
-
-*List and manage all your expenses*
-
-### Reports
-![Reports](https://via.placeholder.com/800x400?text=Analytics+and+Reports)
-
-*Detailed analytics with visual charts*
-
-### Login
-![Login](https://via.placeholder.com/800x400?text=Login+Page)
-
-*Secure authentication interface*
-
-> **Note**: Replace placeholder images with actual screenshots of your application
-
----
 
 ## 🎥 Demo
 
 ### Live Application
 
-- **Frontend**: [https://your-frontend-url.vercel.app](https://your-frontend-url.vercel.app)
-- **Backend API**: [https://your-backend-url.onrender.com](https://your-backend-url.onrender.com)
-- **Health Check**: [https://your-backend-url.onrender.com/health](https://your-backend-url.onrender.com/health)
+- **Frontend**: xtrackerapp.netlify.app
+- **Backend API**: https://xtracker-app.onrender.com
+- **Health Check**: https://xtracker-app.onrender.com
 
-### Video Demonstration
-
-📹 **[Watch 5-10 Minute Demo Video](https://your-video-url.com)**
-
-*This video demonstrates:*
-- User registration and login
-- Adding and managing expenses
-- Dashboard overview
-- Reports and analytics
-- Key features and functionality
-
----
 
 ## 🛠 Technology Stack
 
@@ -299,8 +261,8 @@ For detailed API documentation, see [docs/API.md](xtracker/docs/API.md)
 
 The application is deployed to production:
 
-- **Frontend**: Vercel - [Live URL](https://your-frontend-url.vercel.app)
-- **Backend**: Render - [API URL](https://your-backend-url.onrender.com)
+- **Frontend**: netlify - xtrackerapp.netlify.app
+- **Backend**: Render - https://xtracker-app.onrender.com
 - **Database**: MongoDB Atlas
 
 ### Deployment Guide
@@ -316,7 +278,7 @@ Detailed deployment instructions are available in [DEPLOYMENT.md](xtracker/DEPLO
 - `NODE_ENV` - `production`
 - `SENTRY_DSN` - Sentry DSN (optional)
 
-**Frontend (Vercel):**
+**Frontend (netlify):**
 - `VITE_API_URL` - Backend API URL
 - `VITE_SENTRY_DSN` - Sentry DSN (optional)
 
@@ -411,7 +373,11 @@ Comprehensive documentation is available in the `docs/` directory:
 - [Frontend README](xtracker/frontend/README.md)
 - [Deployment Guide](xtracker/DEPLOYMENT.md)
 
----
+---  
+
+
+## pitvh deck
+      link to pitch deck presentation: https://gamma.app/docs/xtracker-12uish5pmmveg3f
 
 ## 🤝 Contributing
 
@@ -442,9 +408,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Your Name**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- GitHub: [Mogul28](https://github.com/Mogul28)
+- Email: mbusiro200@gmail.com
+- LinkedIn:[Bramwel Mwita] https://www.linkedin.com/in/bramwel-mwita
 
 ---
 
@@ -486,8 +452,6 @@ See [ARCHITECTURE.md](xtracker/docs/ARCHITECTURE.md) for more details.
 
 <div align="center">
 
-**Built with ❤️ using the MERN Stack**
 
-⭐ Star this repo if you find it helpful!
 
 </div>

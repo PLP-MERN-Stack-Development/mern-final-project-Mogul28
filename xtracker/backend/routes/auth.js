@@ -1,8 +1,14 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 import User from '../models/User.js';
 
 const router = express.Router();
+
+// Helper function to check database connection
+const checkDatabaseConnection = () => {
+  return mongoose.connection.readyState === 1; // 1 = connected
+};
 
 // Generate JWT Token
 const generateToken = (id) => {
@@ -16,6 +22,15 @@ const generateToken = (id) => {
 // @access  Public
 router.post('/signup', async (req, res) => {
   try {
+    // Check database connection first
+    if (!checkDatabaseConnection()) {
+      console.error('Database not connected. Connection state:', mongoose.connection.readyState);
+      return res.status(503).json({ 
+        error: 'Database connection failed. Please ensure MongoDB is running and MONGODB_URI is set correctly.',
+        details: 'The server cannot connect to the database. Check your MONGODB_URI environment variable and ensure MongoDB is running.'
+      });
+    }
+
     const { name, email, password } = req.body;
 
     // Validation
@@ -52,7 +67,45 @@ router.post('/signup', async (req, res) => {
     }
   } catch (error) {
     console.error('Signup error:', error);
-    res.status(500).json({ error: 'Server error during signup' });
+    console.error('Error name:', error.name);
+    console.error('Error message:', error.message);
+    console.error('Database connection state:', mongoose.connection.readyState);
+    
+    // Provide more specific error messages
+    if (error.name === 'MongoServerError' && error.code === 11000) {
+      return res.status(400).json({ error: 'User already exists with this email' });
+    }
+    
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({ error: error.message });
+    }
+    
+    // Check for database connection errors
+    if (error.name === 'MongooseError' || 
+        error.name === 'MongoNetworkError' || 
+        error.name === 'MongoTimeoutError' ||
+        error.message?.includes('MongoDB') ||
+        error.message?.includes('connection') ||
+        error.message?.includes('connect ECONNREFUSED') ||
+        !checkDatabaseConnection()) {
+      return res.status(503).json({ 
+        error: 'Database connection failed. Please ensure MongoDB is running and MONGODB_URI is set correctly.',
+        ...(process.env.NODE_ENV === 'development' && { 
+          details: error.message,
+          connectionState: mongoose.connection.readyState,
+          hint: 'Check your .env file for MONGODB_URI and ensure MongoDB is running'
+        })
+      });
+    }
+    
+    res.status(500).json({ 
+      error: 'Server error during signup',
+      ...(process.env.NODE_ENV === 'development' && { 
+        details: error.message,
+        errorName: error.name,
+        stack: error.stack
+      })
+    });
   }
 });
 
@@ -61,6 +114,15 @@ router.post('/signup', async (req, res) => {
 // @access  Public
 router.post('/login', async (req, res) => {
   try {
+    // Check database connection first
+    if (!checkDatabaseConnection()) {
+      console.error('Database not connected. Connection state:', mongoose.connection.readyState);
+      return res.status(503).json({ 
+        error: 'Database connection failed. Please ensure MongoDB is running and MONGODB_URI is set correctly.',
+        details: 'The server cannot connect to the database. Check your MONGODB_URI environment variable and ensure MongoDB is running.'
+      });
+    }
+
     const { email, password } = req.body;
 
     // Validation
@@ -83,7 +145,36 @@ router.post('/login', async (req, res) => {
     }
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ error: 'Server error during login' });
+    console.error('Error name:', error.name);
+    console.error('Error message:', error.message);
+    console.error('Database connection state:', mongoose.connection.readyState);
+    
+    // Check for database connection errors
+    if (error.name === 'MongooseError' || 
+        error.name === 'MongoNetworkError' || 
+        error.name === 'MongoTimeoutError' ||
+        error.message?.includes('MongoDB') ||
+        error.message?.includes('connection') ||
+        error.message?.includes('connect ECONNREFUSED') ||
+        !checkDatabaseConnection()) {
+      return res.status(503).json({ 
+        error: 'Database connection failed. Please ensure MongoDB is running and MONGODB_URI is set correctly.',
+        ...(process.env.NODE_ENV === 'development' && { 
+          details: error.message,
+          connectionState: mongoose.connection.readyState,
+          hint: 'Check your .env file for MONGODB_URI and ensure MongoDB is running'
+        })
+      });
+    }
+    
+    res.status(500).json({ 
+      error: 'Server error during login',
+      ...(process.env.NODE_ENV === 'development' && { 
+        details: error.message,
+        errorName: error.name,
+        stack: error.stack
+      })
+    });
   }
 });
 

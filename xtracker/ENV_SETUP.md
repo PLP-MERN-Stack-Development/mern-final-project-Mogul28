@@ -18,7 +18,7 @@ JWT_SECRET=your-strong-random-secret-key-change-in-production
 
 # Frontend URL (for CORS)
 # Development: http://localhost:5173
-# Production: https://your-frontend.vercel.app
+# Production: https://your-frontend.netlify.app
 FRONTEND_URL=http://localhost:5173
 
 # Environment
@@ -77,13 +77,14 @@ VITE_SENTRY_DSN=your_sentry_dsn_here
    - `NODE_ENV` = `production`
    - `SENTRY_DSN` (optional)
 
-#### Vercel (Frontend)
+#### Netlify (Frontend)
 
-1. Go to your project dashboard
-2. Navigate to "Settings" → "Environment Variables"
+1. Go to your site dashboard
+2. Navigate to "Site settings" → "Environment variables"
 3. Add each variable:
    - `VITE_API_URL`
    - `VITE_SENTRY_DSN` (optional)
+4. Redeploy after adding variables
 
 ## Generating Secure Secrets
 
@@ -146,6 +147,30 @@ node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
 - ❌ Committing `.env` files
 - ❌ Using weak secrets
 - ❌ Sharing secrets in code/comments
+
+### 500 Internal Server Error
+
+If you're getting a 500 error when trying to sign up or login:
+
+1. **Check MongoDB Connection:**
+   - Verify `MONGODB_URI` is set correctly
+   - Test connection: Visit `http://localhost:3000/health` (should show database: "connected")
+   - Check MongoDB Atlas IP whitelist includes your IP or `0.0.0.0/0`
+
+2. **Check Environment Variables:**
+   - Ensure `MONGODB_URI` is set in your `.env` file (local) or Render dashboard (production)
+   - Verify `JWT_SECRET` is set (optional but recommended)
+   - Restart the server after adding environment variables
+
+3. **Check Server Logs:**
+   - Look for "MongoDB connection error" messages
+   - Check for "MONGODB_URI is not defined" errors
+   - Verify the server started successfully
+
+4. **Database Connection Issues:**
+   - If using MongoDB Atlas, ensure cluster is running
+   - Check network access settings in MongoDB Atlas
+   - Verify connection string format is correct
 
 ---
 
