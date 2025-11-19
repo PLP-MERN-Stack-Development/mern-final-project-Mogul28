@@ -1,13 +1,13 @@
 # Deployment Guide
 
-This guide covers deploying the Expense Tracker application to Render (backend) and Vercel (frontend).
+This guide covers deploying the Expense Tracker application to Render (backend) and Netlify (frontend).
 
 ## Prerequisites
 
 - GitHub/GitLab/Bitbucket account
 - MongoDB Atlas account (free tier available)
 - Render account (free tier available)
-- Vercel account (free tier available)
+- Netlify account (free tier available)
 
 ## Backend Deployment (Render)
 
@@ -36,7 +36,7 @@ This guide covers deploying the Expense Tracker application to Render (backend) 
 4. Connect your repository
 5. Configure the service:
    - **Name**: `xtracker-backend` (or your preferred name)
-   - **Root Directory**: `backend`
+   - **Root Directory**: `xtracker/backend`
    - **Environment**: `Node`
    - **Build Command**: `npm install`
    - **Start Command**: `npm start`
@@ -44,7 +44,7 @@ This guide covers deploying the Expense Tracker application to Render (backend) 
    ```
    MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/xtracker
    JWT_SECRET=your-strong-random-secret-key-here
-   FRONTEND_URL=https://your-frontend.vercel.app
+   FRONTEND_URL=https://your-frontend.netlify.app
    NODE_ENV=production
    PORT=3000
    ```
@@ -56,44 +56,44 @@ This guide covers deploying the Expense Tracker application to Render (backend) 
 
 Visit `https://your-backend-url.onrender.com/health` to verify it's running.
 
-## Frontend Deployment (Vercel)
+## Frontend Deployment (Netlify)
 
 ### Step 1: Prepare Frontend
 
 1. Ensure your frontend code is pushed to GitHub/GitLab/Bitbucket
 2. Note your backend URL from Render (e.g., `https://xtracker-backend.onrender.com`)
 
-### Step 2: Deploy to Vercel
+### Step 2: Deploy to Netlify
 
-1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
-2. Click "Add New..." → "Project"
-3. Import your repository
-4. Configure the project:
-   - **Framework Preset**: Vite (auto-detected)
-   - **Root Directory**: `frontend`
-   - **Build Command**: `npm run build` (auto-detected)
-   - **Output Directory**: `dist` (auto-detected)
-5. Add Environment Variable:
-   ```
-   VITE_API_URL=https://your-backend-url.onrender.com
-   ```
-   Replace `your-backend-url.onrender.com` with your actual Render backend URL
-6. Click "Deploy"
+1. Go to [Netlify Dashboard](https://app.netlify.com)
+2. Click "Add new site" → "Import an existing project"
+3. Connect to GitHub and select your repository
+4. Configure build settings:
+   - **Base directory**: `xtracker/frontend`
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist`
+5. Add Environment Variables:
+   - **VITE_API_URL**: `https://your-backend-url.onrender.com`
+     - Replace `your-backend-url.onrender.com` with your actual Render backend URL
+   - **VITE_SENTRY_DSN**: (Optional) Your Sentry DSN if using error tracking
+6. Click "Deploy site"
 7. Wait for deployment to complete
-8. Copy your frontend URL (e.g., `https://xtracker.vercel.app`)
+8. Copy your frontend URL (e.g., `https://your-app.netlify.app`)
+
+**Note:** The `netlify.toml` file in `xtracker/frontend/` will automatically configure the build settings and SPA routing.
 
 ### Step 3: Update Backend CORS
 
 1. Go back to Render dashboard
-2. Update the `FRONTEND_URL` environment variable to your Vercel URL:
+2. Update the `FRONTEND_URL` environment variable to your Netlify URL:
    ```
-   FRONTEND_URL=https://your-frontend.vercel.app
+   FRONTEND_URL=https://your-frontend.netlify.app
    ```
 3. Render will automatically redeploy
 
 ### Step 4: Test Application
 
-1. Visit your Vercel frontend URL
+1. Visit your Netlify frontend URL
 2. Create a new account
 3. Test adding expenses
 4. Verify everything works
@@ -103,12 +103,13 @@ Visit `https://your-backend-url.onrender.com/health` to verify it's running.
 ### Backend (Render)
 - `MONGODB_URI` - MongoDB Atlas connection string
 - `JWT_SECRET` - Strong random string for JWT signing
-- `FRONTEND_URL` - Your Vercel frontend URL
+- `FRONTEND_URL` - Your Netlify frontend URL
 - `NODE_ENV` - `production`
 - `PORT` - `3000` (Render sets this automatically)
 
-### Frontend (Vercel)
+### Frontend (Netlify)
 - `VITE_API_URL` - Your Render backend URL (e.g., `https://xtracker-backend.onrender.com`)
+- `VITE_SENTRY_DSN` - (Optional) Sentry DSN for error tracking
 
 ## Troubleshooting
 
@@ -120,7 +121,7 @@ Visit `https://your-backend-url.onrender.com/health` to verify it's running.
    - Verify database user credentials
 
 2. **CORS Errors**
-   - Ensure `FRONTEND_URL` in Render matches your Vercel URL exactly
+   - Ensure `FRONTEND_URL` in Render matches your Netlify URL exactly
    - Check for trailing slashes
 
 3. **Service Spinning Down**
@@ -131,13 +132,14 @@ Visit `https://your-backend-url.onrender.com/health` to verify it's running.
 ### Frontend Issues
 
 1. **API Connection Failed**
-   - Verify `VITE_API_URL` is set correctly in Vercel
+   - Verify `VITE_API_URL` is set correctly in Netlify
    - Check backend is running and accessible
    - Verify CORS is configured correctly
 
 2. **Build Errors**
    - Check Node.js version compatibility
-   - Review build logs in Vercel dashboard
+   - Review build logs in Netlify dashboard
+   - Verify `netlify.toml` configuration is correct
 
 ## Security Notes
 
@@ -145,7 +147,7 @@ Visit `https://your-backend-url.onrender.com/health` to verify it's running.
 - Use strong, random JWT_SECRET (minimum 32 characters)
 - Keep MongoDB credentials secure
 - Regularly update dependencies
-- Use HTTPS in production (both Render and Vercel provide this)
+- Use HTTPS in production (both Render and Netlify provide this)
 
 ## Post-Deployment
 
@@ -158,17 +160,17 @@ Visit `https://your-backend-url.onrender.com/health` to verify it's running.
 
 2. Monitor:
    - Render logs for backend errors
-   - Vercel analytics for frontend performance
+   - Netlify analytics for frontend performance
    - MongoDB Atlas for database usage
 
 3. Set up custom domains (optional):
    - Render: Add custom domain in service settings
-   - Vercel: Add custom domain in project settings
+   - Netlify: Add custom domain in site settings
 
 ## Support
 
 For issues:
 - Render: https://render.com/docs
-- Vercel: https://vercel.com/docs
+- Netlify: https://docs.netlify.com
 - MongoDB Atlas: https://docs.atlas.mongodb.com
 

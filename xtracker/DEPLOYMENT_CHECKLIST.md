@@ -42,25 +42,27 @@ Use this checklist to ensure your XTracker application is fully deployed and rea
 - [ ] Test health endpoint: `https://your-backend.onrender.com/health`
 - [ ] Copy backend URL for frontend configuration
 
-### 2. Frontend Deployment (Vercel)
+### 2. Frontend Deployment (Netlify)
 
-- [ ] Create Vercel account
+- [ ] Create Netlify account
 - [ ] Import GitHub repository
 - [ ] Configure project:
-  - [ ] Framework Preset: `Vite`
-  - [ ] Root Directory: `xtracker/frontend`
-  - [ ] Build Command: `npm run build` (auto-detected)
-  - [ ] Output Directory: `dist` (auto-detected)
-- [ ] Add environment variable:
+  - [ ] Base Directory: `xtracker/frontend`
+  - [ ] Build Command: `npm run build`
+  - [ ] Publish Directory: `dist`
+  - [ ] Framework: `Vite` (auto-detected)
+- [ ] Add environment variables:
   - [ ] `VITE_API_URL` - Your Render backend URL
   - [ ] `VITE_SENTRY_DSN` - (Optional) Sentry DSN
 - [ ] Deploy project
 - [ ] Copy frontend URL
 
+**Note:** The `netlify.toml` file will automatically configure build settings and SPA routing.
+
 ### 3. Update Backend CORS
 
 - [ ] Go back to Render dashboard
-- [ ] Update `FRONTEND_URL` environment variable with Vercel URL
+- [ ] Update `FRONTEND_URL` environment variable with Netlify URL
 - [ ] Service will automatically redeploy
 
 ### 4. Testing
@@ -102,7 +104,7 @@ Use this checklist to ensure your XTracker application is fully deployed and rea
 - [ ] Configure GitHub Secrets:
   - [ ] `RENDER_SERVICE_ID` (if using Render API)
   - [ ] `RENDER_API_KEY` (if using Render API)
-  - [ ] `VERCEL_TOKEN` (for Vercel deployment)
+  - [ ] `NETLIFY_AUTH_TOKEN` (optional, for Netlify CLI deployment)
   - [ ] `VITE_API_URL` (for frontend tests)
 - [ ] Test CI/CD pipeline
 - [ ] Verify tests run on push
@@ -111,7 +113,7 @@ Use this checklist to ensure your XTracker application is fully deployed and rea
 
 - [ ] All environment variables set correctly
 - [ ] No secrets in code
-- [ ] HTTPS enabled (automatic on Vercel/Render)
+- [ ] HTTPS enabled (automatic on Netlify/Render)
 - [ ] CORS configured correctly
 - [ ] Strong JWT_SECRET in production
 - [ ] MongoDB credentials secure
@@ -161,7 +163,7 @@ Use this checklist to ensure your XTracker application is fully deployed and rea
 ## Support Resources
 
 - [Render Documentation](https://render.com/docs)
-- [Vercel Documentation](https://vercel.com/docs)
+- [Netlify Documentation](https://docs.netlify.com)
 - [MongoDB Atlas Documentation](https://docs.atlas.mongodb.com)
 - [Sentry Documentation](https://docs.sentry.io)
 

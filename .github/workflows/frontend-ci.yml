@@ -56,53 +56,36 @@ jobs:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
         run: npm run build
 
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+# Note: Netlify auto-deploys from GitHub when connected.
+# If you want to deploy via GitHub Actions instead, uncomment the deploy job below
+# and configure NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID secrets.
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install Vercel CLI
-        run: npm install -g vercel@latest
-
-      - name: Pull Vercel Environment Information
-        working-directory: xtracker/frontend
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: |
-          if [ -z "$VERCEL_TOKEN" ]; then
-            echo "Vercel token not configured, skipping deployment"
-            exit 0
-          fi
-          vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
-
-      - name: Build Project Artifacts
-        working-directory: xtracker/frontend
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: |
-          if [ -z "$VERCEL_TOKEN" ]; then
-            echo "Vercel token not configured, skipping build"
-            exit 0
-          fi
-          vercel build --prod --token="$VERCEL_TOKEN"
-
-      - name: Deploy Project Artifacts to Vercel
-        working-directory: xtracker/frontend
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: |
-          if [ -z "$VERCEL_TOKEN" ]; then
-            echo "Vercel token not configured, skipping deployment"
-            exit 0
-          fi
-          vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+#  deploy:
+#    needs: test
+#    runs-on: ubuntu-latest
+#    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+#    
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#
+#      - name: Setup Node.js
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: '18'
+#
+#      - name: Install Netlify CLI
+#        run: npm install -g netlify-cli
+#
+#      - name: Deploy to Netlify
+#        working-directory: xtracker/frontend
+#        env:
+#          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+#          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+#        run: |
+#          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+#            echo "Netlify secrets not configured, skipping deployment"
+#            exit 0
+#          fi
+#          netlify deploy --prod --dir=dist
 
