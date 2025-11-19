@@ -378,7 +378,7 @@ Comprehensive documentation is available in the `docs/` directory:
 
 ## pitch deck
 
-    https://gamma.app/docs/xtracker-12uish5pmmveg3f
+    https://gamma.app/docs/XTracker-Pitch-Deck-x5x3xo6125mmz5e
 
 ## 🤝 Contributing
 
