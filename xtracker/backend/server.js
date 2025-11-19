@@ -55,6 +55,23 @@ if (process.env.SENTRY_DSN) {
   app.use(Sentry.Handlers.tracingHandler());
 }
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'XTracker API - Expense Tracking Application',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      health: '/health',
+      auth: '/api/auth',
+      expenses: '/api/expenses',
+      categories: '/api/categories'
+    },
+    documentation: 'See README.md for API documentation',
+    database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ 
